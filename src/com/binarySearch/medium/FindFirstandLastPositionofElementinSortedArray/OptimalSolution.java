@@ -12,20 +12,20 @@ public class OptimalSolution {
 			range[1] = -1;
 			return range;
 		}
-		int secondPos = secondPosition(nums, target, n);
+		int lastPos = lastPosition(nums, target, n);
 		range[0] = firstPos;
-		range[1] = secondPos;
+		range[1] = lastPos;
 		return range;
 	}
 
-	private static int secondPosition(int[] nums, int target, int n) {
+	private static int lastPosition(int[] nums, int target, int n) {
 		int low = 0;
 		int high = n - 1;
-		int secondPos = -1;
+		int lastPos = -1;
 		while (low <= high) {
 			int mid = low + (high - low) / 2;
 			if (nums[mid] == target) {
-				secondPos = mid;
+				lastPos = mid;
 				low = mid + 1;
 			} else if (nums[mid] < target) {
 				low = mid + 1;
@@ -33,7 +33,7 @@ public class OptimalSolution {
 				high = mid - 1;
 			}
 		}
-		return secondPos;
+		return lastPos;
 	}
 
 	private static int firstPosition(int[] nums, int target, int n) {
